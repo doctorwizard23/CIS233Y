@@ -20,15 +20,19 @@ class ConsoleUI:
     @classmethod
     def list_records(cls):
         for record in cls.__all_records:
-            print(record.get_key(), ": ", record, sep="")
+            print()
+            print(record.get_key(), " - ", record, sep="")
 
     @staticmethod
     def print_menu():
-        print("Please select an option from the list below:")
+        print()
+        print("Please select a number from the list below:")
+        print()
         print(
             " 1. List all records\n",
             "2. Exit"
         )
+        print()
 
 
     @classmethod
@@ -40,8 +44,8 @@ class ConsoleUI:
                 cls.list_records()
             elif choice == "2":
                 break
-            print()
 
+        print()
         print("Thank you for using the Vinyl Record Collection Tool!")
 
 if __name__ == '__main__':

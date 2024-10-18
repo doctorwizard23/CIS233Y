@@ -1,5 +1,5 @@
 # Author: Noah McGarry
-# Date: 10/12/2024
+# Date: 10/18/2024
 # !/usr/bin/env python3
 
 
@@ -102,6 +102,8 @@ def y_or_n(prompt="Please enter 'yes' or 'no': "):
             print("Invalid answer.")
 
 
+# So this is my old select_item function
+#
 # def select_item(prompt="Please select an option: ", choices=["Yes", "No"]):
 #     """
 #     Function to prompt for a selection from a provided list and return that selection
@@ -122,6 +124,10 @@ def y_or_n(prompt="Please enter 'yes' or 'no': "):
 #         except ValueError:
 #             print("Invalid input")
 
+
+#
+# I just used Mark's for this lab because it has functionality I can see we will be utilizing later on
+#
 def select_item(prompt="Please type yes or no: ", error="Answer must be yes or no!", choices=["Yes", "No"], map=None):
     """
     Function to prompt for a selection from a provided list and return that selection
@@ -142,6 +148,7 @@ def select_item(prompt="Please type yes or no: ", error="Answer must be yes or n
         if val in value_dict:
             return value_dict[val]
         print(error)
+
 
 def input_value(prompt="Please enter a value: ", type=""):
     """
