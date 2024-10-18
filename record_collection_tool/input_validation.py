@@ -102,25 +102,46 @@ def y_or_n(prompt="Please enter 'yes' or 'no': "):
             print("Invalid answer.")
 
 
-def select_item(prompt="Please select an option: ", items=None):
+# def select_item(prompt="Please select an option: ", choices=["Yes", "No"]):
+#     """
+#     Function to prompt for a selection from a provided list and return that selection
+#     :param prompt: string, Optional string to use as prompt
+#     :param items: list, provided list of selections
+#     :return: items [choice - 1], selection from provided list
+#     """
+#     while True:
+#         for i, item in enumerate(items):
+#             print(f"{i + 1}. {item}")
+#
+#         try:
+#             choice = int(input(prompt))
+#             if 1 <= choice <= len(items):
+#                 return items[choice - 1]
+#             else:
+#                 print("Invalid selection.")
+#         except ValueError:
+#             print("Invalid input")
+
+def select_item(prompt="Please type yes or no: ", error="Answer must be yes or no!", choices=["Yes", "No"], map=None):
     """
     Function to prompt for a selection from a provided list and return that selection
     :param prompt: string, Optional string to use as prompt
-    :param items: list, provided list of selections
-    :return: items [choice - 1], selection from provided list
+    :param error: string, Optional error message
+    :param choices: list, provided list of selections
+    :param map: optional map function to apply a function to an iterable
+    :return: selection from provided list
     """
+    value_dict = {}
+    for choice in choices:
+        value_dict[choice.lower()] = choice
+    if map is not None:
+        for key in map:
+            value_dict[key.lower()] = map[key]
     while True:
-        for i, item in enumerate(items):
-            print(f"{i + 1}. {item}")
-
-        try:
-            choice = int(input(prompt))
-            if 1 <= choice <= len(items):
-                return items[choice - 1]
-            else:
-                print("Invalid selection.")
-        except ValueError:
-            print("Invalid input")
+        val = input(prompt).lower()
+        if val in value_dict:
+            return value_dict[val]
+        print(error)
 
 def input_value(prompt="Please enter a value: ", type=""):
     """
